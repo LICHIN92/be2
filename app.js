@@ -2,7 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose';
 import 'dotenv/config'
 import userRouter from './routes/userRouter.js';
-const port = 3002
+const port = process.env.PORT
 const app = new express();
 
 async function main() {
@@ -14,5 +14,6 @@ async function main() {
 main().then(res => console.log('conected to db')).catch(err => console.log(err));
 app.use('/', userRouter)
 app.listen(port,() => {
+  console.log(port);
   console.log(`running at ${port}`);
 })
